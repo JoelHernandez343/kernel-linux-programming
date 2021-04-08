@@ -7,20 +7,20 @@ const {
 } = require('./modules/parameters');
 
 const app = async () => {
-  let option = 0;
+  let option = '1';
 
   do {
-    option = await menu();
+    option = await menu(option);
 
     await switchOpt(option);
 
     await pause();
-  } while (option !== 0);
+  } while (option !== '0');
 };
 
 const switchOpt = async option => {
   switch (option) {
-    case 1:
+    case '1':
       showAllParameters();
       break;
 
@@ -31,18 +31,18 @@ const switchOpt = async option => {
       showParameter(option);
       break;
 
-    case 6:
+    case '6':
       setParameter('data', await askArray());
       break;
 
-    case 7:
+    case '7':
       const opt = await askOption();
       if (opt !== 0) {
         setParameter('option', opt.toString());
       }
       break;
 
-    case 8:
+    case '8':
       showAbout();
       break;
 
