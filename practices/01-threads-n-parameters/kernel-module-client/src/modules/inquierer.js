@@ -36,7 +36,7 @@ const questions = {
       value: 7,
       name: `${'7.'.green.bold} Write option to kernel module`,
     },
-    new inquirer.Separator(),
+    new inquirer.Separator('------------------------------------'),
     {
       value: 8,
       name: `${'8.'.green.bold} About`,
@@ -50,9 +50,9 @@ const questions = {
 
 const menu = async () => {
   console.clear();
-  console.log('----------------------------------'.yellow.bgBlack);
-  console.log('        Kernel module app         '.white.bgBlack.bold);
-  console.log('----------------------------------\n'.yellow.bgBlack);
+  console.log('--------------------------------------'.yellow.bgBlack);
+  console.log('          Kernel module app           '.white.bgBlack.bold);
+  console.log('--------------------------------------\n'.yellow.bgBlack);
 
   const { option } = await inquirer.prompt(questions);
 
