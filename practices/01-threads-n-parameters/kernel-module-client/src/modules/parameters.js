@@ -15,6 +15,12 @@ const writeParameter = (parameter, str) => {
   fs.writeFileSync(parameter, str);
 };
 
+const showAllParameters = () =>
+  Object.keys(parameters).forEach(name => {
+    showParameter(name);
+    console.log();
+  });
+
 const showParameter = name => {
   const parameter = parameters[name];
 
@@ -33,4 +39,9 @@ const showParameter = name => {
   }
 };
 
-module.exports = { readParameter, writeParameter, showParameter };
+module.exports = {
+  readParameter,
+  writeParameter,
+  showParameter,
+  showAllParameters,
+};

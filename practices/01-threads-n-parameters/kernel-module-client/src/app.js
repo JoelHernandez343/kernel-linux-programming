@@ -1,5 +1,5 @@
 const { menu, pause } = require('./modules/inquierer');
-const { showParameter } = require('./modules/parameters');
+const { showParameter, showAllParameters } = require('./modules/parameters');
 
 const app = async () => {
   let option = 0;
@@ -16,6 +16,7 @@ const app = async () => {
 const switchOpt = async option => {
   switch (option) {
     case 1:
+      showAllParameters();
       break;
 
     case 'option':
