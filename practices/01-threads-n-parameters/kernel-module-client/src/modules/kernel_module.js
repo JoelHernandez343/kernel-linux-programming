@@ -2,19 +2,19 @@ const kernelModulePath = '/sys/module/kpractice01/parameters/';
 
 const parameters = {
   average: {
-    value: 'average',
+    name: 'average',
     access: 'r',
   },
   data: {
-    value: 'data',
+    name: 'data',
     access: 'rw',
   },
   evenData: {
-    value: 'even_data',
+    name: 'even_data',
     access: 'r',
   },
   option: {
-    value: 'option',
+    name: 'option',
     access: 'rw',
   },
 };
