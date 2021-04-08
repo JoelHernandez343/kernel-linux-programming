@@ -1,4 +1,4 @@
-# Kernel module for practice 01
+# Kernel module for practice 02
 ## Usage
 
 Building:
