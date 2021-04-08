@@ -1,3 +1,5 @@
+require('colors');
+
 const art = `
 
 
@@ -16,7 +18,7 @@ const art = `
   |/
 
   All code available on Github!
-`;
+`.yellow;
 
 const showAbout = () => {
   console.log(art);
