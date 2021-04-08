@@ -1,7 +1,12 @@
-const app = async () => {
-  console.clear();
+const { menu, pause } = require('./modules/inquierer');
 
-  console.log('Here will be the app!');
+const app = async () => {
+  let option = 0;
+
+  do {
+    option = await menu();
+    await pause();
+  } while (option !== 0);
 };
 
 module.exports = app;
