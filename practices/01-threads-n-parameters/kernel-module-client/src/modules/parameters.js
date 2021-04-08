@@ -11,8 +11,20 @@ const readParameter = parameter => {
   return data;
 };
 
-const writeParameter = (parameter, str) => {
-  fs.writeFileSync(parameter, str);
+const writeParameter = (parameter, str) => fs.writeFileSync(parameter, str);
+
+const setParameter = (name, value) => {
+  const parameter = parameters[name];
+
+  try {
+    if (!parameter) {
+      throw `This parameter: ${name} doesn't exists.`;
+    }
+
+    writeParameter(`${kernelModulePath}${parameter.name}`, value);
+  } catch (err) {
+    showError(err);
+  }
 };
 
 const showAllParameters = () =>
@@ -39,9 +51,18 @@ const showParameter = name => {
   }
 };
 
+const rgxValidArray = /^(\s*\d+\s*,){0,7}(\s*\d+\s*)$/;
+
+const validateArray = str =>
+  rgxValidArray.test(str) ||
+  'Just numbers separated by "," and up to 8 elements';
+
+const transformArray = str => str.replace(/\s/g, '');
+
 module.exports = {
-  readParameter,
-  writeParameter,
+  setParameter,
   showParameter,
+  validateArray,
+  transformArray,
   showAllParameters,
 };

@@ -1,6 +1,7 @@
 require('colors');
 
 const inquirer = require('inquirer');
+const { validateArray, transformArray } = require('./parameters');
 
 const questions = {
   type: 'list',
@@ -66,7 +67,18 @@ const pause = async () =>
     message: `Press ${'ENTER'.green} to continue.`,
   });
 
+const askArray = async () => {
+  const { array } = await inquirer.prompt({
+    name: 'array',
+    message: `Input the array's values separated by ",". Limit 8:`,
+    validate: validateArray,
+  });
+
+  return transformArray(array);
+};
+
 module.exports = {
   menu,
   pause,
+  askArray,
 };
