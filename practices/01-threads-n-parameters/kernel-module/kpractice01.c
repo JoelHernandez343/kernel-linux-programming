@@ -10,7 +10,7 @@
 #include <linux/kthread.h>
 #include <linux/err.h>
 
-#define MAX 254
+#define MAX 8
 
 /* Module information */
 MODULE_LICENSE("GPL");
@@ -65,7 +65,7 @@ void find_even_numbers(void){
     }
 
     for (; i < length; ++i){
-        even_data[i] = -1;
+        even_data[i] = 0;
     }
 }
 
@@ -93,14 +93,17 @@ static int thread_fn(void *args){
 
         switch (option) {
             case 1:
+                printk(KERN_INFO"Method invoked. Calculating average.\n");
                 calc_average();
                 break;
         
             case 2:
+                printk(KERN_INFO"Method invoked. Sorting data.\n");
                 sort();
                 break;
 
             case 3:
+                printk(KERN_INFO"Method invoked. Finding even numbers.\n");
                 find_even_numbers();
                 break;
         }
