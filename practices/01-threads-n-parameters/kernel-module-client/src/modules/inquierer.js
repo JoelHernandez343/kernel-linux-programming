@@ -7,7 +7,7 @@ const questions = {
   type: 'list',
   name: 'option',
   message: 'Select an option',
-  loop: true,
+  loop: false,
   choices: [
     {
       value: 1,
@@ -31,11 +31,11 @@ const questions = {
     },
     {
       value: 6,
-      name: `${'6.'.green.bold} Write array of data`,
+      name: `${'6.'.green.bold} Set data`,
     },
     {
       value: 7,
-      name: `${'7.'.green.bold} Write option to kernel module`,
+      name: `${'7.'.green.bold} Invoke method of kernel module`,
     },
     new inquirer.Separator('------------------------------------'),
     {
@@ -77,8 +77,37 @@ const askArray = async () => {
   return transformArray(array);
 };
 
+const askOption = async () => {
+  const { option } = await inquirer.prompt({
+    type: 'list',
+    name: 'option',
+    message: `Select module's method to invoke:`,
+    choices: [
+      {
+        value: 1,
+        name: `${'1.'.green.bold} Calculate average`,
+      },
+      {
+        value: 2,
+        name: `${'2.'.green.bold} Sort array`,
+      },
+      {
+        value: 3,
+        name: `${'3.'.green.bold} Find even numbers`,
+      },
+      {
+        value: 0,
+        name: `${'4.'.green.bold} Cancel`,
+      },
+    ],
+  });
+
+  return option;
+};
+
 module.exports = {
   menu,
   pause,
   askArray,
+  askOption,
 };

@@ -1,4 +1,4 @@
-const { menu, pause, askArray } = require('./modules/inquierer');
+const { menu, pause, askArray, askOption } = require('./modules/inquierer');
 const {
   setParameter,
   showParameter,
@@ -32,6 +32,13 @@ const switchOpt = async option => {
 
     case 6:
       setParameter('data', await askArray());
+      break;
+
+    case 7:
+      const opt = await askOption();
+      if (opt !== 0) {
+        setParameter('option', opt.toString());
+      }
       break;
 
     default:
