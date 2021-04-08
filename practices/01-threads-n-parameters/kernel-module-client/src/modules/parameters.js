@@ -51,7 +51,7 @@ const showParameter = name => {
   }
 };
 
-const rgxValidArray = /^(\s*\d+\s*,){0,7}(\s*\d+\s*)$/;
+const rgxValidArray = /^(\s*(-)?\d+\s*,){0,7}(\s*(-)?\d+\s*)$/;
 
 const validateArray = str =>
   rgxValidArray.test(str) ||
