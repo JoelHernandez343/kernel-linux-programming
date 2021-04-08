@@ -1,3 +1,4 @@
+const { showAbout } = require('./modules/about');
 const { menu, pause, askArray, askOption } = require('./modules/inquierer');
 const {
   setParameter,
@@ -39,6 +40,10 @@ const switchOpt = async option => {
       if (opt !== 0) {
         setParameter('option', opt.toString());
       }
+      break;
+
+    case 8:
+      showAbout();
       break;
 
     default:
