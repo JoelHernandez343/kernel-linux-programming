@@ -11,7 +11,7 @@ const art = `
 
    //
   <o)
-  /))           By @usr_placeholder
+  /))          By @JoelHernandez343
 ===#===============================
   |/
 
