@@ -6,7 +6,7 @@ const questions = {
   type: 'list',
   name: 'option',
   message: 'Select an option',
-  loop: false,
+  loop: true,
   choices: [
     {
       value: 1,
@@ -45,6 +45,7 @@ const questions = {
       value: 0,
       name: `${'9.'.green.bold} Exit`,
     },
+    new inquirer.Separator('------------------------------------'),
   ],
 };
 
