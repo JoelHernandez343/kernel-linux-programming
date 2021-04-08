@@ -6,11 +6,6 @@ Building:
 make
 ```
 
-Cleaning:
-```bash
-make clean
-```
-
 Installation
 ```bash
 sudo insmod kpractice01.ko
@@ -36,4 +31,9 @@ parm:           average:Average result. (int)
 Uninstall
 ```bash
 sudo rmmod kpractice01
+```
+
+Cleaning:
+```bash
+make clean
 ```
