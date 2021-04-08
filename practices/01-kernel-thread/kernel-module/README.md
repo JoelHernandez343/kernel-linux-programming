@@ -8,7 +8,7 @@ make
 
 Installation
 ```bash
-sudo insmod kpractice01.ko
+make install
 ```
 
 Show information:
@@ -30,7 +30,7 @@ parm:           average:Average result. (int)
 
 Uninstall
 ```bash
-sudo rmmod kpractice01
+make uninstall
 ```
 
 Cleaning:
