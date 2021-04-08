@@ -23,7 +23,7 @@ static int option = 0;
 module_param(option, int, 0660);
 MODULE_PARM_DESC(option, "[1: Average, 2: Sorting, 3: Even numbers]");
 
-static int data[MAX];
+static int data[MAX] = {5, 78, -23, 97, 12, -5, 7, 44};
 static int length = MAX;
 module_param_array(data, int, &length, 0660);
 MODULE_PARM_DESC(data, "Array to sort.");
@@ -81,6 +81,13 @@ void calc_average(void){
     average = result / length;
 }
 
+void showArray(const int *array){
+    register int i;
+    for (i = 0; i < length; ++i){
+        printk(KERN_INFO"Data[%d]: %d.\n", i, array[i]);
+    }
+}
+
 struct task_struct *kthread;
 
 static int thread_fn(void *args){
@@ -95,16 +102,19 @@ static int thread_fn(void *args){
             case 1:
                 printk(KERN_INFO"Method invoked. Calculating average.\n");
                 calc_average();
+                printk(KERN_INFO"Average: %d.\n", average);
                 break;
         
             case 2:
                 printk(KERN_INFO"Method invoked. Sorting data.\n");
                 sort();
+                showArray(data);
                 break;
 
             case 3:
                 printk(KERN_INFO"Method invoked. Finding even numbers.\n");
                 find_even_numbers();
+                showArray(even_data);
                 break;
         }
 
