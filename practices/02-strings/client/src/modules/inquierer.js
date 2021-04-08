@@ -3,14 +3,15 @@ require('colors');
 const inquirer = require('inquirer');
 // const { validateArray, transformArray } = require('./parameters');
 
-const questions = {
+const questions = prev => ({
   type: 'list',
   name: 'option',
   message: 'Select an option',
   loop: false,
+  default: prev,
   choices: [
     {
-      value: 1,
+      value: '1',
       name: `${'1.'.green.bold} Show all parameters`,
     },
     {
@@ -34,37 +35,37 @@ const questions = {
       name: `${'8.'.green.bold} Show <${'length'.red.bold}> parameter`,
     },
     {
-      value: 7,
+      value: '7',
       name: `${'7.'.green.bold} Set string`,
     },
     {
-      value: 8,
+      value: '8',
       name: `${'8.'.green.bold} Set letter to compare with`,
     },
     {
-      value: 9,
+      value: '9',
       name: `${'9.'.green.bold} Invoke method of kernel module`,
     },
     new inquirer.Separator('------------------------------------'),
     {
-      value: 10,
+      value: '10',
       name: `${'10.'.green.bold} About`,
     },
     {
-      value: 0,
+      value: '0',
       name: `${'11.'.green.bold} Exit`,
     },
     new inquirer.Separator('------------------------------------'),
   ],
-};
+});
 
-const menu = async () => {
+const menu = async prev => {
   console.clear();
   console.log('--------------------------------------'.yellow.bgBlack);
   console.log('          Kernel module app           '.white.bgBlack.bold);
   console.log('--------------------------------------\n'.yellow.bgBlack);
 
-  const { option } = await inquirer.prompt(questions);
+  const { option } = await inquirer.prompt(questions(prev));
 
   return option;
 };

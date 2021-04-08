@@ -1,33 +1,34 @@
 const { showAbout } = require('./modules/about');
 const { menu, pause } = require('./modules/inquierer');
-// const {
-//   setParameter,
-//   showParameter,
-//   showAllParameters,
-// } = require('./modules/parameters');
+const {
+  setParameter,
+  showParameter,
+  showAllParameters,
+} = require('./modules/parameters');
 
 const app = async () => {
-  let option = 0;
+  let option = '1';
 
   do {
-    option = await menu();
+    option = await menu(option);
     await switchOpt(option);
     await pause();
-  } while (option !== 0);
+  } while (option !== '0');
 };
 
 const switchOpt = async option => {
   switch (option) {
-    //     case 1:
-    //       showAllParameters();
-    //       break;
+    case '1':
+      showAllParameters();
+      break;
 
-    //     case 'option':
-    //     case 'data':
-    //     case 'evenData':
-    //     case 'average':
-    //       showParameter(option);
-    //       break;
+    case 'str':
+    case 'option':
+    case 'letter':
+    case 'length':
+    case 'coincidences':
+      showParameter(option);
+      break;
 
     //     case 6:
     //       setParameter('data', await askArray());
@@ -40,7 +41,7 @@ const switchOpt = async option => {
     //       }
     //       break;
 
-    case 10:
+    case '10':
       showAbout();
       break;
   }
