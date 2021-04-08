@@ -21,15 +21,15 @@ MODULE_VERSION("1.0.0");
 /* Parameters */
 static int option = 0;
 module_param(option, int, 0660);
-MODULE_PARM_DESC(option, "[1: Average, 2: Sorting, 3: Even numbers]");
+MODULE_PARM_DESC(option, "[1: Count coincidences, 2: Calculating length]");
 
 static char *str = "esta es la optativa de advanced computing systems programming";
 module_param(str, charp, 0660);
 MODULE_PARM_DESC(str, "Input string.");
 
-static int letter = '\0';
-module_param(letter, int, 0660);
-MODULE_PARM_DESC(letter, "Letter to search.");
+static char *letter = "";
+module_param(letter, charp, 0660);
+MODULE_PARM_DESC(letter, "Letter to search. Only fisrt character will be processed.");
 
 static int coincidences;
 module_param(coincidences, int, 0440);
@@ -45,7 +45,7 @@ void count_coincidences(void){
     register int i, result = 0;
 
     for (i = 0; str[i]; ++i){
-        result += str[i] == letter;
+        result += str[i] == letter[0];
     }
 
     coincidences = result;
