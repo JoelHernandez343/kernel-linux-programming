@@ -11,10 +11,7 @@ const app = async () => {
 
   do {
     option = await menu(option);
-
     await switchOpt(option);
-
-    await pause();
   } while (option !== '0');
 };
 
@@ -37,18 +34,24 @@ const switchOpt = async option => {
 
     case '7':
       const opt = await askOption();
-      if (opt !== 0) {
-        setParameter('option', opt.toString());
+      if (opt === 0) {
+        return;
       }
+
+      setParameter('option', opt.toString());
+
       break;
 
     case '8':
       showAbout();
       break;
 
-    default:
-      break;
+    case '0':
+      console.log('\nBye :)');
+      return;
   }
+
+  await pause();
 };
 
 module.exports = app;
