@@ -11,3 +11,4 @@ This repo contains the practices and the lessons viewed in the optional course `
 
 ## To-do
 - [ ] Create animated gifs instead of multiple screenshots.
+- [ ] Add more documentation to lessons.
