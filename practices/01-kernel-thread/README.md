@@ -1,4 +1,6 @@
 # Practice 1 - Kernel Module with arrays
+![](./docs/sc01.png)
+
 ## Description
 
 Develop a kernel module that performs various operations with an `int` array.
@@ -43,9 +45,5 @@ Execute the following command and enter super user credentials:
 ```bash
 npm start
 ```
-
-Execution
-
-![](./docs/sc01.png)
 
 Further information, see [README.md](./client/README.md)
