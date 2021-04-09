@@ -81,7 +81,7 @@ void calc_average(void){
     average = result / length;
 }
 
-void showArray(const int *array, const char *name){
+void show_array(const int *array, const char *name){
     register int i;
     for (i = 0; i < length; ++i){
         printk(KERN_INFO"%s[%d]: %d.\n", name, i, array[i]);
@@ -108,13 +108,13 @@ static int thread_fn(void *args){
             case 2:
                 printk(KERN_INFO"Method invoked. Sorting data.\n");
                 sort();
-                showArray(data, "data");
+                show_array(data, "data");
                 break;
 
             case 3:
                 printk(KERN_INFO"Method invoked. Finding even numbers.\n");
                 find_even_numbers();
-                showArray(even_data, "even_data");
+                show_array(even_data, "even_data");
                 break;
         }
 
