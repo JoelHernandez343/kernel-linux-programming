@@ -9,4 +9,4 @@ This repo contains the practices and the lessons viewed in the optional course `
 ![](./practices/02-strings/docs/sc01.png)
 
 ## To-do
-- [] Create animated gifs instead of multiple screenshots.
+- [ ] Create animated gifs instead of multiple screenshots.
