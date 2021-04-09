@@ -23,3 +23,28 @@ average | `int` | Store the average of array's elements
 even_data | `int *` | Store even numbers of `data`
 
 Operations must be performed in a kernel thread through the selected `option`. The parameters will be modified and read by an user's space app, **which has to be developed as well**.
+
+## Usage
+
+The practice consists in two parts, the module kernel and the user's space app developed with `Node.js`.
+
+### Kernel module.
+
+Read [README.md](./kernel-module/README.md) of kernel module.
+
+### Application
+
+Install npm packages:
+```bash
+npm i
+```
+
+Execute the following command and enter super user credentials:
+```bash
+npm start
+```
+
+Execution
+![](./docs/sc01.png)
+
+Further information, see [README.md](./client/README.md)
