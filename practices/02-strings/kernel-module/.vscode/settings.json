@@ -1,8 +1,3 @@
 {
-  "C_Cpp.errorSquiggles": "Disabled",
-  "files.associations": {
-    "array": "c",
-    "string": "c",
-    "string_view": "c"
-  }
+  "C_Cpp.errorSquiggles": "Disabled"
 }
