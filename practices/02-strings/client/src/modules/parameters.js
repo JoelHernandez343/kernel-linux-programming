@@ -51,6 +51,11 @@ const showParameter = name => {
   }
 };
 
+const valStr = str => /^[\x00-\x7F]*$/.test(str) || 'Only ASCII characters';
+
+const valLetter = str =>
+  /^[\x00-\x7F]$/.test(str) || 'Only one ASCII character';
+
 // const rgxValidArray = /^(\s*(-)?\d+\s*,){0,7}(\s*(-)?\d+\s*)$/;
 
 // const validateArray = str =>
@@ -60,6 +65,8 @@ const showParameter = name => {
 // const transformArray = str => str.replace(/\s/g, '');
 
 module.exports = {
+  valStr,
+  valLetter,
   setParameter,
   showParameter,
   showAllParameters,

@@ -1,6 +1,7 @@
 require('colors');
 
 const inquirer = require('inquirer');
+const { valLetter, valStr } = require('./parameters');
 // const { validateArray, transformArray } = require('./parameters');
 
 const questions = prev => ({
@@ -76,15 +77,25 @@ const pause = async () =>
     message: `Press ${'ENTER'.green} to continue.`,
   });
 
-// const askArray = async () => {
-//   const { array } = await inquirer.prompt({
-//     name: 'array',
-//     message: `Input the array's values separated by ",". Limit 8:`,
-//     validate: validateArray,
-//   });
+const askString = async () => {
+  const { str } = await inquirer.prompt({
+    name: 'str',
+    message: 'Input the string: ',
+    validate: valStr,
+  });
 
-//   return transformArray(array);
-// };
+  return str;
+};
+
+const askLetter = async () => {
+  const { letter } = await inquirer.prompt({
+    name: 'letter',
+    message: 'Input a single ASCII character:',
+    validate: valLetter,
+  });
+
+  return letter;
+};
 
 // const askOption = async () => {
 //   const { option } = await inquirer.prompt({
@@ -117,4 +128,6 @@ const pause = async () =>
 module.exports = {
   menu,
   pause,
+  askString,
+  askLetter,
 };
