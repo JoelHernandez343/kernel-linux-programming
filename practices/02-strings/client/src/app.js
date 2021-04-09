@@ -1,5 +1,11 @@
 const { showAbout } = require('./modules/about');
-const { menu, pause, askString, askLetter } = require('./modules/inquierer');
+const {
+  menu,
+  pause,
+  askString,
+  askLetter,
+  askOption,
+} = require('./modules/inquierer');
 const {
   setParameter,
   showParameter,
@@ -37,23 +43,22 @@ const switchOpt = async option => {
       setParameter('letter', await askLetter());
       break;
 
-    //     case 6:
-    //       setParameter('data', await askArray());
-    //       break;
+    case '9':
+      const opt = await askOption();
+      if (opt === 0) {
+        return;
+      }
 
-    //     case 7:
-    //       const opt = await askOption();
-    //       if (opt !== 0) {
-    //         setParameter('option', opt.toString());
-    //       }
-    //       break;
+      setParameter('option', opt.toString());
+
+      break;
 
     case '10':
       showAbout();
       break;
 
     case '0':
-      console.log('Bye :)');
+      console.log('\nBye :)');
       return;
   }
 

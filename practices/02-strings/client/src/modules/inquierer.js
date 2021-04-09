@@ -97,37 +97,34 @@ const askLetter = async () => {
   return letter;
 };
 
-// const askOption = async () => {
-//   const { option } = await inquirer.prompt({
-//     type: 'list',
-//     name: 'option',
-//     message: `Select module's method to invoke:`,
-//     choices: [
-//       {
-//         value: 1,
-//         name: `${'1.'.green.bold} Calculate average`,
-//       },
-//       {
-//         value: 2,
-//         name: `${'2.'.green.bold} Sort array`,
-//       },
-//       {
-//         value: 3,
-//         name: `${'3.'.green.bold} Find even numbers`,
-//       },
-//       {
-//         value: 0,
-//         name: `${'4.'.green.bold} Cancel`,
-//       },
-//     ],
-//   });
+const askOption = async () => {
+  const { option } = await inquirer.prompt({
+    type: 'list',
+    name: 'option',
+    message: `Select module's method to invoke:`,
+    choices: [
+      {
+        value: 1,
+        name: `${'1.'.green.bold} Count letter coincidences`,
+      },
+      {
+        value: 2,
+        name: `${'2.'.green.bold} Calculate length`,
+      },
+      {
+        value: 0,
+        name: `${'4.'.green.bold} Cancel`,
+      },
+    ],
+  });
 
-//   return option;
-// };
+  return option;
+};
 
 module.exports = {
   menu,
   pause,
   askString,
   askLetter,
+  askOption,
 };
