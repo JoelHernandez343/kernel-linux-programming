@@ -56,14 +56,6 @@ const valStr = str => /^[\x00-\x7F]*$/.test(str) || 'Only ASCII characters';
 const valLetter = str =>
   /^[\x00-\x7F]$/.test(str) || 'Only one ASCII character';
 
-// const rgxValidArray = /^(\s*(-)?\d+\s*,){0,7}(\s*(-)?\d+\s*)$/;
-
-// const validateArray = str =>
-//   rgxValidArray.test(str) ||
-//   'Just numbers separated by "," and up to 8 elements';
-
-// const transformArray = str => str.replace(/\s/g, '');
-
 module.exports = {
   valStr,
   valLetter,
