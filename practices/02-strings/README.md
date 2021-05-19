@@ -1,6 +1,6 @@
 # Practice 2 - Kernel Module with arrays
 
-![](./docs/sc01.png)
+![](./docs/sc01.gif)
 
 ## Description
 
