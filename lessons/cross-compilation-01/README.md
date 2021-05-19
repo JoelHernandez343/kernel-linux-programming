@@ -12,7 +12,7 @@ Toolchain download:
 git clone --depth=1 https://github.com/raspberrypi/tools ~/armtools
 ```
 
-PATH update (`.bashsrc`, `.zshsrc`, etc):
+PATH update (`.bashsrc`, `.zshrc`, etc):
 
 ```shell
 echo PATH="\$PATH:~/armtools/arm-bcm2708/arm-linux-gnueabihf" >> ~/.bashsrc
