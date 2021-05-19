@@ -73,3 +73,15 @@ Then `n` will be `18`, thus the command will be:
 ```shell
 make -j18 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ```
+
+## Makefile compilation
+
+```Makefile
+obj-m += arm-program.c
+
+all:
+    make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -C ~/armlinux M=$(PWD) modules
+
+clean:
+    make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -C ~/armlinux M=$(PWD) clean
+```
