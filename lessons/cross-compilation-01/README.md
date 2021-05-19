@@ -9,7 +9,7 @@ sudo apt install git bc libncurses5-dev flex bison openssl libssl-dev dkms make 
 Toolchain download:
 
 ```shell
-git clone https://github.com/raspberrypi/tools ~/armtools
+git clone --depth=1 https://github.com/raspberrypi/tools ~/armtools
 ```
 
 PATH update (`.bashsrc`, `.zshsrc`, etc):
