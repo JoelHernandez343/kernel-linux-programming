@@ -15,7 +15,7 @@ git clone --depth=1 https://github.com/raspberrypi/tools ~/armtools
 PATH update (`.bashsrc`, `.zshrc`, etc):
 
 ```shell
-echo PATH="\$PATH:~/armtools/arm-bcm2708/arm-linux-gnueabihf" >> ~/.bashsrc
+echo "\nPATH=\$PATH:~/armtools/arm-bcm2708/arm-linux-gnueabihf/bin" >> ~/.bashsrc
 source ~/.bashsrc
 ```
 
