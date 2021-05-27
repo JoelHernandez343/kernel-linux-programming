@@ -58,7 +58,7 @@ void configGPIO(volatile uint32_t *gpio_virtual, int gpio, int modo)
 
         int GPFSEL = gpio / 10;
         int bitRango = (gpio % 10);
-        bitRango = bitRango << 1 + bitRango;
+        bitRango = (bitRango << 1) + bitRango;
         if (modo == 0)
                 *(gpio_virtual + GPFSEL) = (*(gpio_virtual + GPFSEL) & ~(7 << bitRango)) | (1 << bitRango);
         else if (modo == 1)
