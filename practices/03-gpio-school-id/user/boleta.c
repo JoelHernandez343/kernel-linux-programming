@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include "parameters.h"
 
@@ -28,10 +27,8 @@ int main(int argc, char *argv[]){
 
     printf("Number to send: %s\n", argv[1]);
     
-    int fd = open_parameter("/sys/module/gpio_id/parameters/school_id");
+    write_n_close("/sys/module/gpio_id/parameters/school_id", argv[1]);
+    write_n_close("/sys/module/gpio_id/parameters/option", "1");
 
-    write_parameter(fd, argv[1]);
-
-    close(fd);
     return 0;
 }

@@ -38,3 +38,9 @@ void write_parameter(int fd, char *parameter){
     }
     printf("Bytes sent: %d\n", sent);
 }
+
+void write_n_close(char *parameter, char *value){
+    int fd = open_parameter(parameter);
+    write_parameter(fd, value);
+    close(fd);
+}
