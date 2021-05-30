@@ -7,6 +7,8 @@
 #include <sys/mman.h>
 #include <errno.h>
 #include <stdint.h>
+
+#define GPIO 10
 #define CICLOS 5
 
 void configGPIO(volatile uint32_t *gpio_virtual, int gpio, int modo);
@@ -23,19 +25,19 @@ int main()
 
         gpio_virtual = obtDirVirtual(0x3f200000, &fd);
 
-        configGPIO(gpio_virtual, 16, 0);
+        configGPIO(gpio_virtual, GPIO, 0);
         //Se configura el BCM GPIO16 como salida
         // *(gpio + 1) = (*(gpio + 1) & ~(7 << 18)) | (1 << 18);
 
         for (i = 0; i < CICLOS; i++)
         {
                 //Se pone en uno el GPIO 16
-                valueGPIO(gpio_virtual, 16, 1);
+                valueGPIO(gpio_virtual, GPIO, 1);
 
                 sleep(2);
 
                 //Se pone en ceroel GPIO 16
-                valueGPIO(gpio_virtual, 16, 0);
+                valueGPIO(gpio_virtual, GPIO, 0);
 
                 // *(gpio_virtual + 10) = *(gpio_virtual + 10) | (1 << 16);
 
