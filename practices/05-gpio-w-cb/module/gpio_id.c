@@ -118,6 +118,7 @@ void cb_fn(void){
     }
 
     option = 0;
+    show_iddle();
 }
 
 
@@ -134,6 +135,9 @@ static int __init init_fn(void){
     }
 
     config_all_gpio();
+
+    /* show first iddle */
+    show_iddle();
 
     return 0;
 }
@@ -158,7 +162,7 @@ void show_id(const char *id){
     for (i = 0; i < 10; ++i){
         printk(KERN_INFO"%c\n", id[i]);
         show_char(id[i] - '0');
-        udelay(1);
+        ssleep(1);
     }
 }
 
