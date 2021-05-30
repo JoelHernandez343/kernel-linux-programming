@@ -13,8 +13,10 @@
 
 #include <asm/io.h>
 
-/* function definitions */
+/* constants */
+#define ADDR_BASE_GPIO 0x3f200000
 
+/* function definitions */
 void cb_fn(void);
 
 void show_char(int chr);
@@ -165,12 +167,13 @@ void show_iddle(void){
 }
 
 /* gpio functions */
-void config_gpio(int gpio_number, int mode){
-    int gpfsel = gpio_number / 10;
-    int bitRange = (gpio_number % 10);
+void config_gpio(int gpio, int mode){
+    int gpfsel = gpio / 10;
+    int bit = mode == 0 ? 1 : 0;
+    int bitRange = (gpio % 10);
         bitRange += (bitRange << 1);
 
-    virtual_gpio[gpfsel] = (virtual_gpio[gpfsel] & ~(7 << bitRange)) | (mode << bitRange);
+    virtual_gpio[gpfsel] = (virtual_gpio[gpfsel] & ~(7 << bitRange)) | (bit << bitRange);
 }
 
 void config_all_gpio(void){

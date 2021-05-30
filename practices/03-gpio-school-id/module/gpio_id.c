@@ -166,7 +166,7 @@ void config_gpio(int gpio, int mode){
     int gpfsel = gpio / 10;
     int bit = mode == 0 ? 1 : 0;
     int bitRange = (gpio % 10);
-    bitRange += (bitRange << 1);
+        bitRange += (bitRange << 1);
 
     virtual_gpio[gpfsel] = (virtual_gpio[gpfsel] & ~(7 << bitRange)) | (bit << bitRange);
 }
