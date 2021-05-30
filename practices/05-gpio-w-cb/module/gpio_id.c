@@ -184,13 +184,12 @@ void config_all_gpio(void){
     }
 }
 
-void set_value(int gpio_number, int value){
-    int bit = gpio_number >> 5;
+void set_value(int gpio, int value){
+    int bit = gpio >> 5;
     int offset = bit + (value == 1 ? 7 : 10);
+    int bitRange = gpio % 32;
 
-    int bitRange = gpio_number % 32;
-
-    virtual_gpio[offset] |= 1 << bitRange;
+    virtual_gpio[offset] = 1 << bitRange;
 }
 
 module_init(init_fn);
