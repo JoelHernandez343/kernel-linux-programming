@@ -14,7 +14,7 @@
 #include <asm/io.h>
 
 /* constants */
-
+#define ADDR_BASE_GPIO 0x3f200000
 
 /* module information */
 MODULE_LICENSE("MIT");
@@ -96,7 +96,7 @@ static int __init init_fn(void){
     printk(KERN_INFO"Initializing practice 3 :)\n");
 
     /* gpio configuration */
-    virtual_gpio = (uint32_t *)ioremap(0x3f200000, 0x30);
+    virtual_gpio = (uint32_t *)ioremap(ADDR_BASE_GPIO, 0x30);
 
     if (virtual_gpio == NULL){
         printk(KERN_ERR"Error getting virtual dir, leaving.\n");
@@ -153,7 +153,7 @@ void show_id(const char *id){
     for (i = 0; i < 10; ++i){
         printk(KERN_INFO"%c\n", id[i]);
         show_char(id[i] - '0');
-        udelay(1);
+        ssleep(1);
     }
 }
 
@@ -162,12 +162,13 @@ void show_iddle(void){
 }
 
 /* gpio functions */
-void config_gpio(int gpio_number, int mode){
-    int gpfsel = gpio_number / 10;
-    int bitRange = (gpio_number % 10);
-        bitRange += (bitRange << 1);
+void config_gpio(int gpio, int mode){
+    int gpfsel = gpio / 10;
+    int bit = mode == 0 ? 1 : 0;
+    int bitRange = (gpio % 10);
+    bitRange += (bitRange << 1);
 
-    virtual_gpio[gpfsel] = (virtual_gpio[gpfsel] & ~(7 << bitRange)) | (mode << bitRange);
+    virtual_gpio[gpfsel] = (virtual_gpio[gpfsel] & ~(7 << bitRange)) | (bit << bitRange);
 }
 
 void config_all_gpio(void){
@@ -178,13 +179,12 @@ void config_all_gpio(void){
     }
 }
 
-void set_value(int gpio_number, int value){
-    int bit = gpio_number >> 5;
+void set_value(int gpio, int value){
+    int bit = gpio >> 5;
     int offset = bit + (value == 1 ? 7 : 10);
+    int bitRange = gpio % 32;
 
-    int bitRange = gpio_number % 32;
-
-    virtual_gpio[offset] |= 1 << bitRange;
+    virtual_gpio[offset] = 1 << bitRange;
 }
 
 module_init(init_fn);
