@@ -3,13 +3,13 @@
  * Code under MIT license
  */
 
-#include <linux/module.h>
-#include <linux/kernel.h>
-#include <linux/init.h>
-#include <linux/moduleparam.h>
-#include <linux/kthread.h>
-#include <linux/delay.h>
 #include <linux/err.h>
+#include <linux/init.h>
+#include <linux/delay.h>
+#include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/kthread.h>
+#include <linux/moduleparam.h>
 
 #include <asm/io.h>
 
