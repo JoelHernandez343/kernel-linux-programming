@@ -1,5 +1,5 @@
 /*
- * Device driver with hardcoded major and mnor number
+ * Device driver with hardcoded major and minor number
  */
 
 #include <linux/fs.h>
