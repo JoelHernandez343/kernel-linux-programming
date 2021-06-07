@@ -1,3 +1,7 @@
+/*
+ * Device driver with hardcoded major and mnor number
+ */
+
 #include <linux/fs.h>
 #include <linux/init.h>
 #include <linux/types.h>
