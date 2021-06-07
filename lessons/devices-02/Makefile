@@ -1,4 +1,4 @@
-obj-m += ddc-1.o
+obj-m += ddc-2.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
