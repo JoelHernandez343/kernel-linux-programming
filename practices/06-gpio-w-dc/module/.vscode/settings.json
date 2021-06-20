@@ -1,0 +1,9 @@
+{
+  "C_Cpp.errorSquiggles": "Disabled",
+  "files.associations": {
+    "*.hbs": "html",
+    "Cargo.lock": "toml",
+    "*.jsx": "javascript",
+    "kernel.h": "c"
+  }
+}
