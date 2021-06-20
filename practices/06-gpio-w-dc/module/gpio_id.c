@@ -230,6 +230,8 @@ static ssize_t driver_write (struct file *filp, const char *buf, size_t len, lof
     memcpy(school_id, buffer, bytes_to_copy);
     school_id[10] = 0;
 
+    printk(KERN_INFO "School id copied: %s\n", school_id);
+
     cb_fn();
 
     return len;
