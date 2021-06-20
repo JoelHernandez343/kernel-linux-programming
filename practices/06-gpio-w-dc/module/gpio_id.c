@@ -44,8 +44,8 @@ static struct device *dev_file;
 static struct cdev dev_cdev;
 static char *buffer;
 
-static char *school_id = "0000000000";
-static int status;
+static char school_id[] = "0000000000";
+static int status = 0;
 
 /* driver configuration definitions */
 
@@ -85,14 +85,9 @@ int segments[] = {17, 18, 27, 22, 23, 24, 10};
 /* function implementations */
 
 void cb_fn(void){
-    switch (status) {
-        case 0:
-            show_iddle();
-            break;
-    
-        case 1:
-            show_id(school_id);
-            break;
+    if (status == 0){
+        status = 1;
+        show_id(school_id);
     }
 
     status = 0;
@@ -203,7 +198,7 @@ static ssize_t driver_read (struct file *filp, char __user *buf, size_t len, lof
 }
 
 static ssize_t driver_write (struct file *filp, const char *buf, size_t len, loff_t *off){
-    int ret, bytes_to_copy;
+    int ret, bytes_to_copy, i;
 
     printk(KERN_INFO "Executing write operation\n");
     printk(KERN_INFO "Length: %d, offset: %lld\n", len, *off);
@@ -224,10 +219,14 @@ static ssize_t driver_write (struct file *filp, const char *buf, size_t len, lof
 
 
     // Copy the received buffer to school_id
-    memset(school_id, '0', 10);
+    for (i = 0; i < 10; ++i){
+        school_id[i] = '0';
+    }
     bytes_to_copy = len > 10 ? 10 : len;
     
-    memcpy(school_id, buffer, bytes_to_copy);
+    for (i = 0; i < bytes_to_copy; ++i){
+        school_id[i] = buffer[i];
+    }
     school_id[10] = 0;
 
     printk(KERN_INFO "School id copied: %s\n", school_id);
@@ -244,7 +243,7 @@ static int __init init_fn(void){
     printk(KERN_INFO"Initializing practice 6 :)\n");
 
     /* driver configuration */
-    ret = alloc_chrdev_region( &device, 0, 1, "school_id" );
+    ret = alloc_chrdev_region( &device, 0, 1, "school_region" );
     if (ret < 0){
         printk(KERN_ERR "Error registering character device driver \n");
         return ret;
@@ -274,7 +273,7 @@ static int __init init_fn(void){
     }
     printk(KERN_INFO "Class created successfully... \n");
 
-    dev_file = device_create( dev_class, NULL, device, NULL, "ESCOM_device");
+    dev_file = device_create( dev_class, NULL, device, NULL, "school_id");
     if (IS_ERR(dev_file)){
         printk(KERN_ERR "Error creating device \n");
         class_destroy(dev_class);
